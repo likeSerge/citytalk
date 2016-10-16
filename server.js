@@ -9,7 +9,7 @@ var http = require('http').Server(app);
 
 // Redirect http to https
 function requireHTTPS(req, res, next) {
-    if (process.env.PORT && !req.secure) {
+    if (process.env.PORT !== undefined && !req.secure) {
         return res.redirect('https://' + req.get('host') + req.url);
     }
     next();
@@ -25,7 +25,7 @@ var db = require('./app/services/db.js');
 var config = require('./app/server.conf.js');
 var mongoURL = config.mongoUrl;
 
-db.connect(mongoURL, function(err) {
+db.connect(mongoURL, function (err) {
     if (err) {
         console.log('Unable to connect to Mongo.');
         process.exit(1);
