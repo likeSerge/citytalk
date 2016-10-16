@@ -8,13 +8,12 @@ var app = express();
 var http = require('http').Server(app);
 
 // Redirect http to https
-function requireHTTPS(req, res, next) {
-    if (process.env.PORT !== undefined && !req.secure) {
-        return res.redirect('https://' + req.get('host') + req.url);
-    }
-    next();
-}
-app.use(requireHTTPS);
+app.get('*',function(req,res,next){
+    if(process.env.PORT !== undefined && req.headers['x-forwarded-proto']!=='https')
+        res.redirect('https://' + req.get('host') + req.url);
+    else
+        next(); /* Continue to other routes if we're not redirecting */
+});
 
 var findChatRouter = require('./app/routers/findChatRouter.js');
 app.use('/findchat', findChatRouter);
