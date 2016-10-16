@@ -26,8 +26,8 @@
     /**
      * Find screen controller
      */
-    findChatController.$inject = ['$state', '$http', 'locationService'];
-    function findChatController($state, $http, locationService) {
+    findChatController.$inject = ['$state', '$http', 'locationService', 'citytalkApiUrl'];
+    function findChatController($state, $http, locationService, citytalkApiUrl) {
         var self = this;
         self.locationDenied = false;
         self.userName = localStorage.userName || '';
@@ -63,8 +63,7 @@
             console.log('userPreferredLocation', self.userPreferredLocation);
             console.log('label', self.userLabel);
 
-            var apiUrl = 'http://localhost:3000';
-            $http.post(apiUrl + '/findchat', {
+            $http.post(citytalkApiUrl + 'findchat', {
                     userName: self.userName,
                     userLocation: (self.userPreferredLocation==='world') ?
                         'world' : self.userLocation,

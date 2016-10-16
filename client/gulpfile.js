@@ -79,6 +79,7 @@ gulp.task('js:clean', function () {
 gulp.task('js:build', function () {
     gulp.src(['js/citytalk.module.js',
             'js/citytalk.routes.js',
+            'js/client.conf.js',
             'js/controllers/**/*',
             'js/components/**/*',
             'js/services/**/*' ],

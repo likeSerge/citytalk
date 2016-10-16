@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Connect to DB and start listening
 var db = require('./app/services/db.js');
-var config = require('./app/config/server.conf.js');
+var config = require('./app/server.conf.js');
 var mongoURL = config.mongoUrl;
 
 db.connect(mongoURL, function(err) {
