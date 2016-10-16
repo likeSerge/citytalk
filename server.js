@@ -7,6 +7,15 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 
+// Redirect http to https
+function requireHTTPS(req, res, next) {
+    if (process.env.PORT && !req.secure) {
+        return res.redirect('https://' + req.get('host') + req.url);
+    }
+    next();
+}
+app.use(requireHTTPS);
+
 var findChatRouter = require('./app/routers/findChatRouter.js');
 app.use('/findchat', findChatRouter);
 app.use(express.static(__dirname + '/public'));
