@@ -1,0 +1,29 @@
+<div class="form-group">
+    <p class="text-info text-center text-large">
+        Find partner to talk:
+    </p>
+    <label class="radio-inline">
+        <input ng-model="$ctrl.preferredLocation"
+                type="radio" name="inlineRadioOptions" id="inlineRadio2" value="world">
+        whole World
+    </label>
+    <label class="radio-inline">
+        <input ng-model="$ctrl.preferredLocation" ng-disabled="$ctrl.locationDenied"
+                type="radio" name="inlineRadioOptions" id="inlineRadio1" value="city">
+        your City
+    </label>
+    <p ng-show="$ctrl.locationDenied">
+        Allow cityTalk to see your location to find people in your city
+    </p>
+</div>
+<div class="form-group">
+    <label for="tagsInput" class="text-info text-center text-large tagsLabel">
+        Add label (search only among same labeled people)
+    </label>
+    <input ng-model="$ctrl.label"
+            type="text" id="tagsInput" class="form-control" placeholder="Label(optional)">
+    <br>
+
+</div>
+
+<button ng-click="$ctrl.startChat()" type="button" class="btn btn-success btn-lg">Start</button>

@@ -1,0 +1,22 @@
+.text-xlarge{
+    font-size: x-large;
+}
+
+.start-container {
+    padding: 100px 0 0 0;
+
+    label {
+        display: block;
+        font-weight: normal;
+        margin: 0 0 35px 0;
+    }
+
+    input,
+    button {
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 300px;
+        max-width: 95%;
+        text-align: center;
+    }
+}

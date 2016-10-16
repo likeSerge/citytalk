@@ -1,0 +1,33 @@
+.text-large {
+    font-size: large;
+}
+
+.find-container {
+
+    .form-group {
+        text-align: center;
+    }
+
+    p,
+    .tagsLabel{
+        margin: 35px 0 15px 0;
+        font-weight: normal;
+    }
+
+    #tagsInput,
+    button {
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 300px;
+        max-width: 95%;
+        text-align: center;
+    }
+
+
+
+
+    .radio-inline {
+        width: 120px;
+    }
+
+}

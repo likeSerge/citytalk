@@ -1,0 +1,19 @@
+<nav class = "navbar navbar-default" role = "navigation">
+    <div class="container">
+        <p id="headerText">
+            Hi <span class="text-info">{{$ctrl.userName}}</span> from
+            <span class="text-info">{{$ctrl.userLocation}}</span>
+        </p>
+        <!-- Menu button -->
+        <div class="btn-group" id="menu">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a ui-sref="start">Change name</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ui-sref="find">Find new chat</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

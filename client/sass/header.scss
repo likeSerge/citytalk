@@ -1,0 +1,29 @@
+div#menu {
+    float: right;
+    margin: 5px 0px 10px 0;
+
+    button {
+        padding: 7px 30px;
+        min-width: 128px;
+    }
+
+    .dropdown-menu {
+        min-width: 128px;
+
+        a {
+            padding: 3px 15px;
+        }
+    }
+
+}
+
+p#headerText {
+    margin: 12px 0px;
+    font-size: 15px;
+    display: inline-block;
+}
+
+.navbar {
+    min-height: 47px;
+    height: 47px;
+}

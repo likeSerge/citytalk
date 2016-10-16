@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../public/header.css">
+</head>
+<body>
+
+<nav class = "navbar navbar-default" role = "navigation">
+    <div class="container">
+        <p id="headerText">Hi <span class="text-info">user</span> from <span class="text-info">city</span></p>
+        <!-- Menu button -->
+        <div class="btn-group" id="menu">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="#">Change name</a></li>
+                <li><a href="#">Change city</a></li>
+                <li><a href="#">Set default tags</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Find new chat</a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+    <div class="container">
+        Page content
+    </div>
+
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

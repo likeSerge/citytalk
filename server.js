@@ -1,20 +1,36 @@
-//Lets require/import the HTTP module
-var http = require('http');
+/**
+ * Server file
+ */
 
-// set the port of our application
-// process.env.PORT lets the port be set by Heroku
-var port = process.env.PORT || 8080;
+var server = {};
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
 
-//We need a function which handles requests and send response
-function handleRequest(request, response){
-    response.end('It Works!! Path Hit: ' + request.url);
-}
+var findChatRouter = require('./app/routers/findChatRouter.js');
+app.use('/findchat', findChatRouter);
+app.use(express.static(__dirname + '/public'));
 
-//Create a server
-var server = http.createServer(handleRequest);
+// Connect to DB and start listening
+var db = require('./app/services/db.js');
+var config = require('./app/config/server.conf.js');
+var mongoURL = config.mongoUrl;
 
-//Lets start our server
-server.listen(port, function(){
-    //Callback triggered when server is successfully listening. Hurray!
-    console.log("Server listening on: http://localhost:%s", port);
+db.connect(mongoURL, function(err) {
+    if (err) {
+        console.log('Unable to connect to Mongo.');
+        process.exit(1);
+    } else {
+        // Start the application after the database connection is ready
+        http.listen(process.env.PORT || 3000);
+    }
 });
+
+
+//TODO: check code below- passing var to required module with module.exports ??
+// Socket logic
+server.io = require('socket.io')(http);
+module.exports = server;
+
+var socketHandler = require('./app/services/socketHandler');
+socketHandler.run();

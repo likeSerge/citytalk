@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../public/header.css">
+    <link rel="stylesheet" href="../public/chat.css">
+</head>
+<body>
+
+<nav class = "navbar navbar-default" role = "navigation">
+    <div class="container">
+        <p id="headerText">Hi <span class="text-info">user</span> from <span class="text-info">city</span></p>
+        <!-- Menu button -->
+        <div class="btn-group" id="menu">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="#">Change name</a></li>
+                <li><a href="#">Change city</a></li>
+                <li><a href="#">Set default tags</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Find new chat</a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<div class="container chat-container">
+
+    <p class="text-info text-large">
+        Enjoy talking with user2 from city2
+    </p>
+
+    <div id="chat-box">
+        <p class="msg msg--in">
+            <span class="msg__user text-info">John Kozyr</span>
+            <span class="msg__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut culpa dicta ducimus, eum id ipsum numquam obcaecati odio, pariatur quia quis rem tempore totam ullam! Accusantium amet laborum rem?</span>
+            <span class="msg__time text-info">12:15:30</span>
+        </p>
+        <p class="msg msg--in">
+            <span class="msg__user text-info">John Kozyr</span>
+            <span class="msg__text">Lorem ipsum dolor sit ametmet laborum</span>
+            <span class="msg__time text-info">12:15:33</span>
+        </p>
+        <p class="msg msg--out">
+            <span class="msg__user text-info">user1</span>
+            <span class="msg__text">Lorem ipsum dolor sit amet.</span>
+            <span class="msg__time text-info">12:15:50</span>
+        </p>
+        <p class="msg msg--out">
+            <span class="msg__user text-info">user1 11111111</span>
+            <span class="msg__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut culpa dicta ducimus, eum id ipsum numquam obcaecati odio, pariatur quia quis rem tempore totam ullam! Accusantium amet laborum rem?</span>
+            <span class="msg__time text-info">12:15:30</span>
+        </p>
+    </div>
+    <div class="input-group usr-input-msg">
+        <textarea id="usr-input-msg-text" class="form-control custom-control" rows="3"></textarea>
+        <span id="usr-input-msg-btn" class="input-group-addon btn btn-primary">Send</span>
+    </div>
+
+</div>
+
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

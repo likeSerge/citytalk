@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label for="nameInput" class="text-info text-center text-xlarge">
+        Enter your name to start talking
+    </label>
+    <input name="name" type="text" id="nameInput" class="form-control" placeholder="Name"
+           ng-model="$ctrl.userName">
+    <button type="button" class="btn btn-success"
+            ng-click="$ctrl.setUserName({name: $ctrl.userName})"
+            ng-show="$ctrl.isNameValid($ctrl.userName)">
+        Continue
+    </button>
+</div>

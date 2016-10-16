@@ -1,0 +1,23 @@
+<div class="container chat-container">
+
+    <p class="text-info text-large" ng-show="$ctrl.chatStarted">
+        Enjoy talking with partner:
+    </p>
+    <p class="text-info text-large" ng-show="!$ctrl.chatStarted">
+        Waiting for partner..
+    </p>
+
+    <div id="chat-box">
+
+    </div>
+    <div class="input-group usr-input-msg">
+        <textarea ng-disabled="!$ctrl.chatStarted" ng-model="$ctrl.message"
+                  id="usr-input-msg-text" class="form-control custom-control" rows="3">
+        </textarea>
+        <span ng-click="$ctrl.sendOutMessage()"
+            id="usr-input-msg-btn" class="input-group-addon btn btn-primary">
+            Send
+        </span>
+    </div>
+
+</div>

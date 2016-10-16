@@ -1,0 +1,66 @@
+.text-large {
+    font-size: large;
+}
+
+#chat-box {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    overflow: auto;
+    margin-bottom: 25px;
+
+    .msg {
+        max-width: 77%;
+        clear: both;
+        .msg__user {
+            position: relative;
+            font-size: 11px;
+        }
+        .msg__text {
+            background: #E7E7E7;
+            display: block;
+            margin: 10px 15px 7px;
+            padding: 10px;
+            border-radius: 15px;
+            clear: both;
+        }
+        .msg__time {
+            clear: both;
+            top: -8px;
+            position: relative;
+            font-size: 11px;
+        }
+    }
+    
+    .msg--out {
+        float: right;
+        .msg__user {
+            float: right;
+            left: -30px;
+        }
+        .msg__time {
+            float: right;
+            left: -12px;
+        }
+    }
+    
+    .msg--in {
+        float: left;
+        .msg__user {
+            float: left;
+            left: 30px;
+        }
+        .msg__time {
+            float: left;
+            left: 12px;
+        }
+    }
+}
+
+.usr-input-msg {
+    margin-bottom: 20px;
+    textarea {
+        resize: none;
+    }
+}
