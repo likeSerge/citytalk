@@ -31,6 +31,7 @@ db.connect(mongoURL, function (err) {
     } else {
         // Start the application after the database connection is ready
         http.listen(process.env.PORT || 3000);
+        console.log('Server started, listening at port:', process.env.PORT || 3000);
     }
 });
 

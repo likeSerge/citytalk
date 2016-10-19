@@ -5,7 +5,15 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "buildi": "npm install && npm run install:client && npm run build:scripts && npm run build:vendor-scripts && npm run build:styles && npm run build:vendor-styles && npm run build:html ",
+    "buildnstart": "npm run buildi && node server.js",
+    "install:client": "cd ./client/ && npm install && cd ..",
+    "build:scripts": "cd ./client/ && gulp  js:build && cd ..",
+    "build:vendor-scripts": "cd ./client/ && gulp  js-vendor:build && cd ..",
+    "build:styles": "cd ./client/ && gulp  styles-vendor:build && cd ..",
+    "build:vendor-styles": "cd ./client/ && gulp  styles:build && cd ..",
+    "build:html": "cd ./client/ && gulp  html:build && cd .."
   },
   "repository": {
     "type": "git",
