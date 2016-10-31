@@ -13,11 +13,11 @@
      */
     startController.$inject = ['$state'];
     function startController($state) {
-        var self = this;
+        const self = this;
         self.userName = localStorage.userName || '';
 
-        self.setUserName = function (name) {
-            localStorage.userName = name.replace(/(<([^>]+)>)/ig,"");
+        self.setUserName = (name) => {
+            localStorage.userName = name.replace(/(<([^>]+)>)/ig, "");
             $state.go('find');
         };
     }
@@ -28,7 +28,7 @@
      */
     findChatController.$inject = ['$state', '$http', 'locationService', 'citytalkApiUrl'];
     function findChatController($state, $http, locationService, citytalkApiUrl) {
-        var self = this;
+        const self = this;
         self.locationDenied = false;
         self.userName = localStorage.userName || '';
         self.userLocation = 'world';
@@ -36,27 +36,27 @@
         self.userLabel = '';
 
         //Check if username set and locate city
-        self.init = function () {
+        self.init = () => {
             if (self.userName === '') {
                 $state.go('start');
             }
             self.setCity();
         };
 
-        self.setCity = function () {
+        self.setCity = () => {
             locationService.getCity()
-                .then(function (result) {
+                .then((result) => {
                     self.userLocation = result;
                     self.locationError = '';
                 })
-                .catch(function (err) {
+                .catch((err) => {
                     console.log(err);
                     self.locationError = 'Allow using location to find your city';
                     self.locationDenied = true;
                 });
         };
 
-        self.startChat = function () {
+        self.startChat = () => {
             console.log('start chat');
             console.log('userName', self.userName);
             console.log('location', self.userLocation);
@@ -64,13 +64,13 @@
             console.log('label', self.userLabel);
 
             $http.post(citytalkApiUrl + 'findchat', {
-                    userName: self.userName,
-                    userLocation: (self.userPreferredLocation==='world') ?
-                        'world' : self.userLocation,
-                    userLabel: (self.userLabel==='') ?
-                        'label' : self.userLabel.trim()
+                userName: self.userName,
+                userLocation: (self.userPreferredLocation === 'world') ?
+                    'world' : self.userLocation,
+                userLabel: (self.userLabel === '') ?
+                    'label' : self.userLabel.trim()
             })
-                .then(function (responseData) {
+                .then((responseData) => {
                     console.log(responseData.data);
                     $state.go('chat', {
                         data: {
@@ -92,7 +92,7 @@
      */
     chatController.$inject = ['$state', '$scope', '$rootScope'];
     function chatController($state, $scope, $rootScope) {
-        var self = this;
+        const self = this;
 
         if (!$state.params.data) {
             $state.go('find');
@@ -106,21 +106,21 @@
 
         var socket = io();
         // Connect
-        socket.on('connect', function () {
+        socket.on('connect', () => {
             // Connected, let's sign-up for to receive messages for this room
             socket.emit('join room', 'userRoom_' + self.room);
         });
 
         // Start chat(both partners connected)
-        socket.on('start', function (msg) {
+        socket.on('start', (msg) => {
             // Non-angular event, call $apply
-            $scope.$apply(function () {
+            $scope.$apply(() => {
                 self.chatStarted = true;
             });
         });
 
         // Send message
-        self.sendMessage = function () {
+        self.sendMessage = () => {
             console.log('sendmesage', self.message);
 
             var msgData = {
@@ -133,7 +133,7 @@
         };
 
         // Receive message
-        socket.on('chat message', function (msg) {
+        socket.on('chat message', (msg) => {
             console.log('message: ' + msg);
             $scope.$broadcast('citytalk:incoming-msg', msg);
         });

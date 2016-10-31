@@ -2,31 +2,31 @@
  * Helper for reusing mongo connection
  */
 
-var MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 
-var state = {
+let state = {
     db: null
 };
 
 var dbUtils = {};
 
-dbUtils.connect = function(url, done) {
+dbUtils.connect = (url, done) => {
     if (state.db) return done();
 
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, (err, db) => {
         if (err) return done(err);
         state.db = db;
         done();
     });
 };
 
-dbUtils.get = function() {
+dbUtils.get = () => {
     return state.db;
 };
 
-dbUtils.close = function(done) {
+dbUtils.close = (done) => {
     if (state.db) {
-        state.db.close(function(err, result) {
+        state.db.close((err, result) => {
             state.db = null;
             state.mode = null;
             done(err);

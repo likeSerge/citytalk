@@ -30,10 +30,10 @@
     }
 
     function startFormComponentController() {
-        var self = this;
-        self.isNameValid = function (name) {
+        const self = this;
+        self.isNameValid = (name) => {
             return name.trim().length;
-        }
+        };
     }
 
     function findFormComponent() {
@@ -63,53 +63,44 @@
 
     chatFormComponentController.$inject = ['$scope', '$element'];
     function chatFormComponentController($scope, $element) {
-        var self = this;
+        const self = this;
         self.chatBox = $element.find('#chat-box');
 
-        $scope.$on('citytalk:incoming-msg', function (event, data) {
+        $scope.$on('citytalk:incoming-msg', (event, data) => {
             self.addIncomingMessage(data);
         });
 
-        self.sendOutMessage = function () {
+        self.sendOutMessage = () => {
             if (self.message.length > 0) {
                 self.addOutgoingMessage();
                 self.sendMessage();
             }
         };
 
-        self.addIncomingMessage = function (msg) {
-            var date = new Date();
-            date = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+        self.addIncomingMessage = (msg) => {
+            let date = new Date();
+            date = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 
             self.chatBox.append(
-                '<p class="msg msg--in">' +
-                '<span class="msg__user text-info">' + msg.user + '</span>' +
-                '<span class="msg__text">' + msg.text + '</span>' +
-                '<span class="msg__time text-info">' + date + '</span>' +
-                '</p>'
+                `<p class="msg msg--in">
+                    <span class="msg__user text-info">${msg.user}</span>
+                    <span class="msg__text">${msg.text}</span>
+                    <span class="msg__time text-info">${date}</span>
+                </p>`
             );
-            console.log('---------------------------------');
-            console.log(
-                '<p class="msg msg--in">' +
-                '<span class="msg__user text-info">' + msg.user + '</span>' +
-                '<span class="msg__text">' + msg.text + '</span>' +
-                '<span class="msg__time text-info">' + date + '</span>' +
-                '</p>'
-            );
-            console.log('**************************************');
             self.chatBox[0].scrollTop = self.chatBox[0].scrollHeight;
         };
 
-        self.addOutgoingMessage = function () {
-            var date = new Date();
-            date = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+        self.addOutgoingMessage = () => {
+            let date = new Date();
+            date = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 
             self.chatBox.append(
-                '<p class="msg msg--out">' +
-                '<span class="msg__user text-info">' + self.userName + '</span>' +
-                '<span class="msg__text">' + self.message + '</span>' +
-                '<span class="msg__time text-info">' + date + '</span>' +
-                '</p>'
+                `<p class="msg msg--out">
+                    <span class="msg__user text-info">${self.userName}</span>
+                    <span class="msg__text">${self.message}</span>
+                    <span class="msg__time text-info">${date}</span>
+                </p>`
             );
             self.chatBox[0].scrollTop = self.chatBox[0].scrollHeight;
         };
