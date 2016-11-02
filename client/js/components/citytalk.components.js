@@ -23,7 +23,7 @@
             templateUrl: 'views/components/start-form.html',
             controller: startFormComponentController,
             bindings: {
-                setUserName: '&',
+                setNameAndChangeState: '&',
                 userName: '@'
             }
         }

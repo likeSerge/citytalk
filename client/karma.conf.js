@@ -20,10 +20,11 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/ngstorage/ngStorage.js',
       'node_modules/socket.io-client/socket.io.js',
 
       '../public/js/citytalk.min.js',
-      'jsspec/**/*.spec.js'
+      'js-specs/**/*.spec.js'
     ],
 
 

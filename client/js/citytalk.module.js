@@ -2,6 +2,6 @@
 
     'use strict';
 
-    angular.module('cityTalk', ['ui.router']);
+    angular.module('cityTalk', ['ui.router', 'ngStorage']);
 
 })();

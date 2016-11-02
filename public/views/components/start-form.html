@@ -5,7 +5,7 @@
     <input name="name" type="text" id="nameInput" class="form-control" placeholder="Name"
            ng-model="$ctrl.userName">
     <button type="button" class="btn btn-success"
-            ng-click="$ctrl.setUserName({name: $ctrl.userName})"
+            ng-click="$ctrl.setNameAndChangeState({name: $ctrl.userName})"
             ng-show="$ctrl.isNameValid($ctrl.userName)">
         Continue
     </button>

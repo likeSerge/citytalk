@@ -113,6 +113,7 @@ gulp.task('js-vendor:build', () => {
             'node_modules/bootstrap/dist/js/bootstrap.js',
             'node_modules/angular/angular.js',
             'node_modules/angular-ui-router/release/angular-ui-router.js',
+            'node_modules/ngstorage/ngStorage.js',
             'node_modules/socket.io-client/socket.io.js' ],
         {base: 'node_modules/'})
         .pipe(sourcemaps.init())

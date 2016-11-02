@@ -11,15 +11,21 @@
     /**
      * Start screen controller
      */
-    startController.$inject = ['$state'];
-    function startController($state) {
+    startController.$inject = ['$state', '$localStorage'];
+    function startController($state, $localStorage) {
         const self = this;
-        self.userName = localStorage.userName || '';
+        self.userName = $localStorage.userName || '';
 
-        self.setUserName = (name) => {
-            localStorage.userName = name.replace(/(<([^>]+)>)/ig, "");
-            $state.go('find');
+        self.setValidUserName = (name) => {
+            let validName = name.replace(/(<([^>]+)>)/ig, "");
+            self.userName = validName;
+            $localStorage.userName = validName;
         };
+
+        self.setNameAndChangeState = (name) => {
+            self.setValidUserName(name);
+            $state.go('find');
+        }
     }
 
 
