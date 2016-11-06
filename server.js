@@ -2,7 +2,6 @@
  * Server file
  */
 
-const server = {};
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -37,10 +36,5 @@ db.connect(mongoURL, (err) => {
 });
 
 
-//TODO: check code below- passing var to required module with module.exports ??
-// Socket logic
-server.io = require('socket.io')(http);
-module.exports = server;
-
-const socketHandler = require('./app/services/socketHandler');
+const socketHandler = require('./app/services/socketHandler')(http);
 socketHandler.run();
