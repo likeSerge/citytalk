@@ -3,7 +3,8 @@
     'use strict';
 
     angular.module('cityTalk')
-        .service('locationService', locationService);
+        .service('locationService', locationService)
+        .service('socketService', socketService);
 
 
     /**
@@ -50,5 +51,38 @@
         }
     }
 
+
+    /**
+     * socketService
+     */
+    socketService.$inject = ['$rootScope'];
+    function socketService($rootScope) {
+        const self = this;
+        let socket = {};
+
+        self.init = () => {
+            socket = io();
+        };
+
+        self.on = (eventName, callback) => {
+            socket.on(eventName, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    callback.apply(socket, args);
+                });
+            });
+        };
+
+        self.emit = (eventName, data, callback) => {
+            socket.emit(eventName, data, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    if (callback) {
+                        callback.apply(socket, args);
+                    }
+                });
+            })
+        };
+    }
 
 })();
